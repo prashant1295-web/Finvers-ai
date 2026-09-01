@@ -1,4 +1,4 @@
-# 🕷️ SpiderSense AI
+# 🕷️ Finvers AI
 
 Connecting the dots. Understanding the market.
 
