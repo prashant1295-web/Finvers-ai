@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Why SpiderSense — SpiderSense AI{% endblock %}
+
+{% block content %}
+<section class="section" style="padding-top:70px;">
+  <div class="wrap" style="max-width:900px;">
+    <div class="section-head">
+      <span class="eyebrow">About</span>
+      <h2>Why SpiderSense?</h2>
+      <p>Retail investors don't lack information. They're drowning in it.</p>
+    </div>
+
+    <div class="problem-grid">
+      <div class="problem-item glass"><b>Information overload</b>Dozens of sources, all shouting different things.</div>
+      <div class="problem-item glass"><b>Complex financial data</b>Balance sheets weren't written for casual reading.</div>
+      <div class="problem-item glass"><b>Too many sources</b>News, filings, charts, forums — no single place to look.</div>
+      <div class="problem-item glass"><b>Hard-to-spot risk</b>The warning signs are often buried in the fine print.</div>
+      <div class="problem-item glass"><b>Time-consuming research</b>Because scrolling through 47 financial articles isn't a strategy.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap" style="max-width:900px;">
+    <div class="section-head">
+      <span class="eyebrow">The approach</span>
+      <h2>Specialised agents, one clear answer</h2>
+      <p>Instead of one model trying to do everything, SpiderSense splits the work the way a good research team would.</p>
+    </div>
+
+    <div class="flow-chain">
+      <div class="flow-step glass">User</div>
+      <span class="flow-arrow">↓</span>
+      <div class="flow-step glass">Orchestrator</div>
+      <span class="flow-arrow">↓</span>
+      <div class="flow-step glass">News + Fundamentals + Market</div>
+      <span class="flow-arrow">↓</span>
+      <div class="flow-step glass">Risk</div>
+      <span class="flow-arrow">↓</span>
+      <div class="flow-step glass">Synthesis</div>
+      <span class="flow-arrow">↓</span>
+      <div class="flow-step glass" style="border-color:var(--violet-soft);">Explainable Financial Intelligence</div>
+    </div>
+
+    <p class="pull-quote">"We don't predict the future. We connect the evidence."</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap" style="max-width:700px;text-align:center;">
+    <h2 style="font-size:1.7rem;">We analyze. You decide.</h2>
+    <p style="margin:0 auto 26px;">SpiderSense gives you a clear, explainable starting point — not a verdict.</p>
+    <a href="{{ url_for('analyze') }}" class="btn btn-primary">Spin the Web</a>
+  </div>
+</section>
+{% endblock %}
