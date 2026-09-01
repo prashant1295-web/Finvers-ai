@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Investigate — SpiderSense AI{% endblock %}
+
+{% block content %}
+<section class="analyze-hero">
+  <div class="wrap">
+    <span class="eyebrow">Investigate</span>
+    <h1>Let's Investigate. 🕷️</h1>
+    <p style="max-width:44ch;margin:14px auto 0;text-align:center;">Enter a company. We'll send the web to work.</p>
+
+    <form class="analyze-form glass" id="analyze-form">
+      <label for="analyze-q" style="position:absolute;width:1px;height:1px;overflow:hidden;">Company / Stock Symbol</label>
+      <input id="analyze-q" type="text" placeholder="Company / Stock Symbol — e.g. Tata Motors">
+      <button type="submit" class="btn btn-primary" id="analyze-btn">Deploy the Spiders 🕷️</button>
+    </form>
+    <p class="field-error" id="analyze-error">The spider can't investigate thin air. Enter a company first.</p>
+
+    <div class="status-panel glass" id="status-panel">
+      <div id="status-lines"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:8px;">
+      <span class="eyebrow">Agent network</span>
+      <h2 style="font-size:1.6rem;">Agent Network</h2>
+    </div>
+    <div class="agent-status-grid" id="agent-status-grid">
+      <div class="agent-status-card glass" data-agent="news">
+        <span class="emoji">📰</span>
+        <div><div class="name">News Agent</div><div class="state">Ready</div></div>
+        <span class="status-dot ready"></span>
+      </div>
+      <div class="agent-status-card glass" data-agent="fundamentals">
+        <span class="emoji">📊</span>
+        <div><div class="name">Fundamental Agent</div><div class="state">Ready</div></div>
+        <span class="status-dot ready"></span>
+      </div>
+      <div class="agent-status-card glass" data-agent="market">
+        <span class="emoji">📈</span>
+        <div><div class="name">Market Agent</div><div class="state">Ready</div></div>
+        <span class="status-dot ready"></span>
+      </div>
+      <div class="agent-status-card glass" data-agent="risk">
+        <span class="emoji">⚠️</span>
+        <div><div class="name">Risk Agent</div><div class="state">Waiting</div></div>
+        <span class="status-dot waiting"></span>
+      </div>
+      <div class="agent-status-card glass" data-agent="synthesis">
+        <span class="emoji">🧠</span>
+        <div><div class="name">Synthesis Agent</div><div class="state">Waiting</div></div>
+        <span class="status-dot waiting"></span>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/analyze.js') }}"></script>
+{% endblock %}
