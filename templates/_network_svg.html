@@ -1,0 +1,78 @@
+<div class="network-stage" id="network-stage">
+  <svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of the SpiderSense agent network">
+    <defs>
+      <linearGradient id="threadGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#7C5CFF"/>
+        <stop offset="100%" stop-color="#00E5C7"/>
+      </linearGradient>
+      <radialGradient id="nodeGlowViolet" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#7C5CFF" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#7C5CFF" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="nodeGlowTeal" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#00E5C7" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#00E5C7" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+
+    <!-- threads -->
+    <path class="web-thread" data-link="orchestrator news" d="M450,96 C 380,140 260,170 190,214"></path>
+    <path class="web-thread" data-link="orchestrator fundamentals" d="M450,96 L450,214"></path>
+    <path class="web-thread" data-link="orchestrator market" d="M450,96 C 520,140 640,170 710,214"></path>
+    <path class="web-thread" data-link="news risk" d="M190,246 C 260,300 360,340 420,368"></path>
+    <path class="web-thread" data-link="fundamentals risk" d="M450,246 L450,368"></path>
+    <path class="web-thread" data-link="market risk" d="M710,246 C 640,300 540,340 480,368"></path>
+    <path class="web-thread" data-link="risk synthesis" d="M450,400 L450,470"></path>
+
+    <!-- Orchestrator -->
+    <g class="agent-node" data-node="orchestrator" data-title="SpiderSense Orchestrator" data-desc="Routes the request, keeps every agent honest, and assembles the final report." transform="translate(450,80)">
+      <circle class="halo" r="34" stroke="#7C5CFF"></circle>
+      <circle class="core" r="26" stroke="#7C5CFF"></circle>
+      <text class="emoji" text-anchor="middle" y="7">🕷️</text>
+      <text text-anchor="middle" y="46">ORCHESTRATOR</text>
+    </g>
+
+    <!-- News -->
+    <g class="agent-node" data-node="news" data-title="News Agent" data-desc="Has opinions about headlines. Scans coverage and scores sentiment." transform="translate(190,230)">
+      <circle class="halo" r="30" stroke="#00E5C7"></circle>
+      <circle class="core" r="24" stroke="#00E5C7"></circle>
+      <text class="emoji" text-anchor="middle" y="6">📰</text>
+      <text text-anchor="middle" y="42">NEWS AGENT</text>
+    </g>
+
+    <!-- Fundamentals -->
+    <g class="agent-node" data-node="fundamentals" data-title="Fundamental Agent" data-desc="Has trust issues with bad numbers. Checks revenue, profit, ratios." transform="translate(450,230)">
+      <circle class="halo" r="30" stroke="#00E5C7"></circle>
+      <circle class="core" r="24" stroke="#00E5C7"></circle>
+      <text class="emoji" text-anchor="middle" y="6">📊</text>
+      <text text-anchor="middle" y="42">FUNDAMENTAL AGENT</text>
+    </g>
+
+    <!-- Market -->
+    <g class="agent-node" data-node="market" data-title="Market Agent" data-desc="Stares at charts so you don't have to. Reads trend and volatility." transform="translate(710,230)">
+      <circle class="halo" r="30" stroke="#00E5C7"></circle>
+      <circle class="core" r="24" stroke="#00E5C7"></circle>
+      <text class="emoji" text-anchor="middle" y="6">📈</text>
+      <text text-anchor="middle" y="42">MARKET AGENT</text>
+    </g>
+
+    <!-- Risk -->
+    <g class="agent-node" data-node="risk" data-title="Risk Agent" data-desc="Always asks: 'but what could go wrong?' Flags what the others might miss." transform="translate(450,384)">
+      <circle class="halo" r="30" stroke="#FF6B4A"></circle>
+      <circle class="core" r="24" stroke="#FF6B4A"></circle>
+      <text class="emoji" text-anchor="middle" y="6">⚠️</text>
+      <text text-anchor="middle" y="42">RISK AGENT</text>
+    </g>
+
+    <!-- Synthesis -->
+    <g class="agent-node" data-node="synthesis" data-title="Synthesis Agent" data-desc="Turns everyone's homework into one clear, explainable report." transform="translate(450,504)">
+      <circle class="halo" r="32" stroke="#7C5CFF"></circle>
+      <circle class="core" r="25" stroke="#7C5CFF"></circle>
+      <text class="emoji" text-anchor="middle" y="6">🧠</text>
+      <text text-anchor="middle" y="44">SYNTHESIS AGENT</text>
+    </g>
+  </svg>
+
+  <div class="network-tooltip" id="network-tooltip"><strong></strong><span></span></div>
+</div>
+<p class="network-hint">Hover or tap a node to see how it fits into the web.</p>
