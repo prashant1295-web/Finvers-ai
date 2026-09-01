@@ -15,7 +15,7 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Then open **spidersense-ai.vercel.app**
+Then open **Finvers-ai.vercel.app**
 
 ## Pages
 
