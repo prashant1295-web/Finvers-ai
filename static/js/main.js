@@ -18,7 +18,7 @@
 })();
 
 const SpiderWatchlist = {
-  KEY: "spidersense_watchlist",
+  KEY: "Finvers_watchlist",
 
   all() {
     try {
