@@ -1,5 +1,5 @@
 """
-SpiderSense AI — Flask backend
+Finvers AI — Flask backend
 --------------------------------
 Serves the frontend and exposes mock endpoints shaped exactly like the
 future real endpoints, so a Python multi-agent backend can be dropped
@@ -197,7 +197,7 @@ def get_company_payload(query: str) -> dict:
         payload = MOCK_COMPANIES[key]
     else:
         template = MOCK_COMPANIES[DEFAULT_TEMPLATE_KEY]
-        rng = random.Random(key or "spidersense")
+        rng = random.Random(key or "Finvers")
         score = _seeded_variation(key, 6.8, 1.6)
         payload = {
             "symbol": "".join(w[:1] for w in query.split()).upper() or "N/A",
