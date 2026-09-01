@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% block title %}{{ data.name }} — SpiderSense AI{% endblock %}
+
+{% block content %}
+<section class="results-head">
+  <div class="wrap">
+    <div class="company">
+      <h1>{{ data.name }}</h1>
+      <span class="symbol">{{ data.symbol }}</span>
+    </div>
+    <p class="timestamp">Web completed {{ data.as_of }}</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+
+    <div class="score-panel glass" id="score-panel"
+         data-score="{{ data.score }}">
+      <div class="score-ring">
+        <svg viewBox="0 0 148 148">
+          <defs>
+            <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00E5C7"/>
+              <stop offset="100%" stop-color="#7C5CFF"/>
+            </linearGradient>
+          </defs>
+          <circle class="track" cx="74" cy="74" r="64"></circle>
+          <circle class="fill" id="score-fill" cx="74" cy="74" r="64"></circle>
+        </svg>
+        <div class="value">
+          <b>{{ data.score }}</b>
+          <span>out of 10</span>
+        </div>
+      </div>
+      <div class="score-meta">
+        <span class="verdict">{{ data.verdict|upper }}</span>
+        <p class="approve-note">"The spiders approve... cautiously."</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
+          <button class="btn btn-ghost" id="watchlist-btn" data-symbol="{{ data.symbol }}" data-name="{{ data.name }}" data-score="{{ data.score }}">+ Catch in Watchlist</button>
+          <a href="{{ url_for('analyze') }}" class="btn btn-ghost">Investigate Another</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="metric-grid">
+      <div class="metric-card glass" data-tip>
+        <div class="top"><span class="icon">📰</span><span class="label">News</span></div>
+        <div class="num">{{ data.agents.news.score }} / 10</div>
+        <span class="badge">{{ data.agents.news.label }}</span>
+        <div class="tip">What's the internet saying about {{ data.name }} this week.</div>
+      </div>
+      <div class="metric-card glass" data-tip>
+        <div class="top"><span class="icon">📊</span><span class="label">Fundamentals</span></div>
+        <div class="num">{{ data.agents.fundamentals.score }} / 10</div>
+        <span class="badge">{{ data.agents.fundamentals.label }}</span>
+        <div class="tip">Revenue, profit and balance-sheet health, checked.</div>
+      </div>
+      <div class="metric-card glass" data-tip>
+        <div class="top"><span class="icon">📈</span><span class="label">Market</span></div>
+        <div class="num">{{ data.agents.market.score }} / 10</div>
+        <span class="badge">{{ data.agents.market.label }}</span>
+        <div class="tip">Price trend, volatility and recent performance.</div>
+      </div>
+      <div class="metric-card glass risk" data-tip>
+        <div class="top"><span class="icon">⚠️</span><span class="label">Risk</span></div>
+        <div class="num">{{ data.agents.risk.level }}</div>
+        <span class="badge">Risk level</span>
+        <div class="tip">Risk spider says: proceed with curiosity, not confidence.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Why this score</span>
+      <h2>Why {{ data.score }}? The Web Has Receipts.</h2>
+    </div>
+    <div class="glass" style="padding:32px;max-width:640px;">
+      <div class="breakdown-list" id="breakdown-list">
+        {% for row in data.breakdown %}
+        <div class="breakdown-row">
+          <div class="row-top">
+            <span>{{ row.label }}</span>
+            <span class="val {{ 'pos' if row.value >= 0 else 'neg' }}">{{ '+' if row.value >= 0 else '' }}{{ row.value }}</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill {{ 'pos' if row.value >= 0 else 'neg' }}" data-value="{{ row.value }}"></div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="breakdown-final">
+        <span>Final Score</span>
+        <b>{{ data.score }} / 10</b>
+      </div>
+      <p class="breakdown-note">"No magic. Just multiple agents arguing politely with data."</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Agent insights</span>
+      <h2>What each spider found</h2>
+    </div>
+
+    <div class="insight-grid">
+      <div class="insight-card glass">
+        <h3>📰 News Agent</h3>
+        <p class="prompt">"What's the internet saying?"</p>
+        <ul class="bullet-list">
+          {% for item in data.news_items %}<li>{{ item }}</li>{% endfor %}
+        </ul>
+      </div>
+
+      <div class="insight-card glass">
+        <h3>📊 Fundamental Agent</h3>
+        <p class="prompt">"Are the numbers behaving?"</p>
+        <div class="kv-list">
+          {% for k, v in data.fundamentals_detail.items() %}
+          <div class="kv"><span>{{ k }}</span><span>{{ v }}</span></div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="insight-card glass">
+        <h3>📈 Market Agent</h3>
+        <p class="prompt">"What are the charts whispering?"</p>
+        <div class="kv-list">
+          {% for k, v in data.market_detail.items() %}
+          <div class="kv"><span>{{ k }}</span><span>{{ v }}</span></div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="insight-card glass">
+        <h3>⚠️ Risk Agent</h3>
+        <p class="prompt">"Okay, but what could go wrong?"</p>
+        <p style="margin-bottom:10px;font-size:0.9rem;"><strong style="color:var(--text);">Risk level:</strong> {{ data.agents.risk.level }}</p>
+        <ul class="bullet-list concern-list">
+          {% for item in data.risk_factors %}<li>{{ item }}</li>{% endfor %}
+        </ul>
+      </div>
+
+      <div class="insight-card glass" style="grid-column: span 2;">
+        <h3>🧠 Synthesis Agent</h3>
+        <p class="prompt">"Let's connect the dots."</p>
+        <p style="font-size:0.94rem;color:var(--text-muted);margin-bottom:16px;">{{ data.synthesis.assessment }}</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+          <div>
+            <p style="font-size:0.8rem;color:var(--text-faint);margin-bottom:8px;">STRENGTHS</p>
+            <ul class="bullet-list strength-list">
+              {% for s in data.synthesis.strengths %}<li>{{ s }}</li>{% endfor %}
+            </ul>
+          </div>
+          <div>
+            <p style="font-size:0.8rem;color:var(--text-faint);margin-bottom:8px;">CONCERNS</p>
+            <ul class="bullet-list concern-list">
+              {% for c in data.synthesis.concerns %}<li>{{ c }}</li>{% endfor %}
+            </ul>
+          </div>
+        </div>
+        <p class="breakdown-note" style="margin-top:16px;">{{ data.synthesis.summary }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/results.js') }}"></script>
+{% endblock %}
