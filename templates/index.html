@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}SpiderSense AI — Financial Intelligence, Connected.{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="wrap">
+    <span class="hero-tag"><span class="dot"></span> Multi-agent financial intelligence, live</span>
+    <h1>Financial Intelligence, Connected.</h1>
+    <p class="hero-sub">Multiple AI agents. One financial picture. Zero crystal balls.</p>
+
+    <form class="hero-search glass" id="hero-search-form">
+      <label for="hero-q">What are we investigating today?</label>
+      <input id="hero-q" type="text" placeholder="Try Tata Motors, Reliance, Infosys...">
+      <button type="submit" class="btn btn-primary">🕷️ Spin the Web</button>
+    </form>
+    <p class="hero-foot">Our agents are already putting their eight legs to work.</p>
+
+    <div class="hero-stats">
+      <div class="stat"><b>5</b><span>specialised agents</span></div>
+      <div class="stat"><b>1</b><span>explainable score</span></div>
+      <div class="stat"><b>0</b><span>crystal balls used</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="how-it-works">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How it works</span>
+      <h2>Meet the Web</h2>
+      <p>Because one AI agent doing everything sounds suspiciously like a group project.</p>
+    </div>
+
+    {% include "_network_svg.html" %}
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The agents</span>
+      <h2>Five specialists. No unnecessary meetings.</h2>
+      <p>Each agent looks at the market from a different angle, then reports back to the web.</p>
+    </div>
+    <div class="agent-grid">
+      <div class="agent-card glass is-orchestrator">
+        <span class="icon">🕷️</span>
+        <h3>Orchestrator</h3>
+        <p class="quip">Keeps the other four from talking over each other.</p>
+      </div>
+      <div class="agent-card glass">
+        <span class="icon">📰</span>
+        <h3>News Agent</h3>
+        <p class="quip">Has opinions about headlines.</p>
+      </div>
+      <div class="agent-card glass">
+        <span class="icon">📊</span>
+        <h3>Fundamental Agent</h3>
+        <p class="quip">Has trust issues with bad numbers.</p>
+      </div>
+      <div class="agent-card glass">
+        <span class="icon">📈</span>
+        <h3>Market Agent</h3>
+        <p class="quip">Stares at charts so you don't have to.</p>
+      </div>
+      <div class="agent-card glass">
+        <span class="icon">⚠️</span>
+        <h3>Risk Agent</h3>
+        <p class="quip">Always asks: "but what could go wrong?"</p>
+      </div>
+      <div class="agent-card glass">
+        <span class="icon">🧠</span>
+        <h3>Synthesis Agent</h3>
+        <p class="quip">Turns everyone's homework into one report.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap" style="text-align:center;">
+    <p class="pull-quote">"Don't just stare at charts. Let the spiders do the staring."</p>
+    <div style="margin-top:36px;">
+      <a href="{{ url_for('analyze') }}" class="btn btn-primary">Deploy the Spiders 🕷️</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
