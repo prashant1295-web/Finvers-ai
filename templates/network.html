@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Inside the Web — SpiderSense AI{% endblock %}
+
+{% block content %}
+<section class="section" style="padding-top:70px;">
+  <div class="wrap">
+    <div class="section-head" style="margin:0 auto 44px;text-align:center;">
+      <span class="eyebrow">Architecture</span>
+      <h2>Inside the Web</h2>
+      <p style="margin:0 auto;">Five agents. One mission. Zero unnecessary meetings.</p>
+    </div>
+
+    {% include "_network_svg.html" %}
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Roles</span>
+      <h2>What each thread carries</h2>
+      <p>Requests flow down through the web; findings flow back up as one report.</p>
+    </div>
+    <div class="agent-grid">
+      <div class="agent-card glass is-orchestrator">
+        <span class="icon">🕷️</span>
+        <h3>Orchestrator</h3>
+        <p class="quip">Routes your question and keeps every agent honest.</p>
+      </div>
+      <div class="agent-card glass">
+        <span class="icon">📰</span>
+        <h3>News Agent</h3>
+        <p class="quip">Has opinions about headlines.</p>
+      </div>
+      <div class="agent-card glass">
+        <span class="icon">📊</span>
+        <h3>Fundamental Agent</h3>
+        <p class="quip">Has trust issues with bad numbers.</p>
+      </div>
+      <div class="agent-card glass">
+        <span class="icon">📈</span>
+        <h3>Market Agent</h3>
+        <p class="quip">Stares at charts so you don't have to.</p>
+      </div>
+      <div class="agent-card glass">
+        <span class="icon">⚠️</span>
+        <h3>Risk Agent</h3>
+        <p class="quip">Always asks: "but what could go wrong?"</p>
+      </div>
+      <div class="agent-card glass">
+        <span class="icon">🧠</span>
+        <h3>Synthesis Agent</h3>
+        <p class="quip">Turns everyone's homework into one report.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
