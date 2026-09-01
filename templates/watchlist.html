@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Your Little Web — SpiderSense AI{% endblock %}
+
+{% block content %}
+<section class="section" style="padding-top:70px;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Watchlist</span>
+      <h2>Your Little Web 🕸️</h2>
+      <p>Keep an eye on the companies you're curious about.</p>
+    </div>
+
+    <div id="watchlist-content"></div>
+
+    <div class="wl-actions">
+      <a href="{{ url_for('analyze') }}" class="btn btn-primary">+ Catch Another One</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/watchlist.js') }}"></script>
+{% endblock %}
